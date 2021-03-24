@@ -95,7 +95,7 @@ def new_member(bot: Bot, update: Update):
         for new_mem in new_members:
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
-                update.effective_message.reply_text("Oh, Genos? Let's get this moving.")
+                update.effective_message.reply_text("Wow...Master,Welcome😍\n\nHis my creator and my boyfriend🙊😘")
                 return "#USER_JOINED\nBot Owner Just Joined The Chat"
 
             # Give the owner a special welcome
@@ -208,7 +208,7 @@ def left_member(bot: Bot, update: Update):
 
             # Give the owner a special goodbye
             if left_mem.id == OWNER_ID:
-                update.effective_message.reply_text("Oi! Genos! He left..")
+                update.effective_message.reply_text("Goodbye Master😭")
                 return
 
             # Give the devs a special goodbye
