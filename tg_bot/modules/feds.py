@@ -96,7 +96,7 @@ def new_fed(bot: Bot, update: Update):
 
 		x = sql.new_fed(user.id, fed_name, fed_id)
 		if not x:
-			update.effective_message.reply_text("Can't federate! Please contact @OnePunchSupport if the problem persists.")
+			update.effective_message.reply_text("Can't federate! Please contact @rsrtginfo if the problem persists.")
 			return
 
 		update.effective_message.reply_text("*You have succeeded in creating a new federation!*"\
@@ -215,7 +215,7 @@ def join_fed(bot: Bot, update: Update, args: List[str]):
 
 		x = sql.chat_join_fed(args[0], chat.title, chat.id)
 		if not x:
-			message.reply_text("Failed to join federation! Please contact @OnePunchSupport should this problem persists!")
+			message.reply_text("Failed to join federation! Please contact @rsrtginfo should this problem persists!")
 			return
 
 		get_fedlog = sql.get_fed_log(args[0])
@@ -441,9 +441,9 @@ def fed_admin(bot: Bot, update: Update, args: List[str]):
 
 	members = sql.all_fed_members(fed_id)
 	if len(members) == 0:
-		text += "\n🔱 There is no admin in this federation"
+		text += "\n♔ There is no admin in this federation"
 	else:
-		text += "\n🔱 Admin:\n"
+		text += "\n♔ Admin:\n"
 		for x in members:
 			user = bot.get_chat(x) 
 			text += " • {}\n".format(mention_html(user.id, user.first_name))
@@ -556,7 +556,7 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
 			return
 		x = sql.fban_user(fed_id, fban_user_id, fban_user_name, fban_user_lname, fban_user_uname, reason, int(time.time()))
 		if not x:
-			message.reply_text("Failed to ban from the federation! If this problem continues, contact @OnePunchSupport.")
+			message.reply_text("Failed to ban from the federation! If this problem continues, contact @rsrtginfo.")
 			return
 
 		fed_chats = sql.all_fed_chats(fed_id)
@@ -659,7 +659,7 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
 
 	x = sql.fban_user(fed_id, fban_user_id, fban_user_name, fban_user_lname, fban_user_uname, reason, int(time.time()))
 	if not x:
-		message.reply_text("Failed to ban from the federation! If this problem continues, contact @OnePunchSupport.")
+		message.reply_text("Failed to ban from the federation! If this problem continues, contact @rsrtginfo.")
 		return
 
 	fed_chats = sql.all_fed_chats(fed_id)
@@ -959,7 +959,7 @@ def set_frules(bot: Bot, update: Update, args: List[str]):
 			markdown_rules = markdown_parser(txt, entities=msg.parse_entities(), offset=offset)
 		x = sql.set_frules(fed_id, markdown_rules)
 		if not x:
-			update.effective_message.reply_text("Big F! There is an error while setting federation rules! If you wondered why please ask it in @OnePunchSupport !")
+			update.effective_message.reply_text("Big F! There is an error while setting federation rules! If you wondered why please ask it in @rsrtginfo !")
 			return
 
 		rules = sql.get_fed_info(fed_id)['frules']
